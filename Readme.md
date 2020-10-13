@@ -16,10 +16,9 @@ INSTALLATIE:
 - DB_USER
 - DB_PASS
 - DB_NAME
-- KEY=
-
-
+- KEY
 
 
 Zodra u klaar bent om de app te gebruiken:
-run: "npm start"
+*run: "npm start"
+*open de "index.html" file in een browser 
