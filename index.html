@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="./src/style/materialize/css/materialize.min.css"
+      media="screen,projection"
+    />
+    
+    <link rel="stylesheet" href="./src/style/login.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NHS - Login bij Het Natin Homework System</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1 class="center-align white-text" style="padding-top: 4%;">
+          Natin Homework System
+        </h1>
+        <!-- Image Logo -->
+        <div class="col s4 center-align" style="padding-top: 5%;">
+          <img src="./assets/natinlogo.png" alt="Natin Logo" />
+        </div>
+
+        <!-- Login Form -->
+        <div class="col s6 offset-s2" style="padding-top: 5%;">
+          <form
+            id="loginForm"
+            name="loginForm"
+            method="post"
+            onsubmit="return inloggen()"
+          >
+            <div class="row">
+              <div class="input-field col s9">
+                <input
+                  id="email"
+                  name="email"
+                  type="text"
+                  class="validate white-text"
+                  required
+                />
+                <label for="email">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s9">
+                <input
+                  id="wachtwoord"
+                  name="wachtwoord"
+                  type="password"
+                  class="validate white-text"
+                  required
+                />
+                <label for="wachtwoord">Password</label>
+              </div>
+            </div>
+            <div class="row col s6">
+              <button class="btn waves-effect waves-light" type="submit">
+                Log In
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    
+    <script
+      type="text/javascript"
+      src="./src/style/materialize/js/materialize.min.js"
+    ></script>
+    <script>
+      M.AutoInit();
+    </script>
+    <script type="text/javascript" src="./src/controllers/loginController.js"></script>
+  </body>
+</html>

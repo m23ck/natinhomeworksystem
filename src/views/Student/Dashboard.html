@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../../../src/style/materialize/css/materialize.min.css"
+    media="screen,projection" />
+  <link href='../../js/node_modules/fullcalendar/main.css' rel='stylesheet' />
+
+  <link rel="stylesheet" href="../../style/main.css">
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NHS - Dashboard</title>
+</head>
+
+<body>
+  <nav> <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a id='notifications-trigger' href="#">
+            <i class="material-icons black-text">notifications</i>
+          </a>
+          <ul id='notifications' class='notifications collection'>
+            <li class="collection-item avatar">
+              <img src="../../../assets/natinlogo.png" alt="" class="circle">
+              <span class="title">Title</span>
+              <p>First Line <br>
+                Second Line
+              </p>
+              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+            <li class="collection-item avatar">
+              <img src="../../../assets/natinlogo.png" alt="" class="circle">
+              <span class="title">Title</span>
+              <p>First Line <br>
+                Second Line
+              </p>
+              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+
+          </ul>
+
+        </li>
+        <li>
+          <a class='dropdown-trigger ' href='#' data-target='dropdown2' href="#">
+            <i class="material-icons black-text">person</i>
+          </a>
+          <ul id='dropdown2' class='dropdown-content'>
+            <li><a href="./gegevens.html" id="huidige_gebruiker_naam"><i class="material-icons left">person</i></a></li>
+            <li><a onclick=" logout()">Logout</a></li>
+          </ul>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="col s3">
+    <ul id="slide-out" class="sidenav sidenav-fixed sidebar text-white">
+      <li class="white-text logo-block">
+        <img width="50px" src="../../../assets/natinlogo.png" />
+        Homework System
+      </li>
+      <span class="line"></span>
+      <nav-block>
+        <li class="active">
+          <i class="material-icons">dashboard</i>
+          <a href="#">Dashboard</a>
+        </li>
+        <li>
+          <i class="material-icons">person</i>
+          <a href="./gegevens.html">My Information</a>
+        </li>
+        <li>
+          <i class="material-icons">flag</i>
+          <a href="./roadmaps.html">Roadmaps</a>
+        </li>
+        <li class="">
+          <i class="material-icons">assessment</i>
+          <a href="./resultaten.html">Results</a>
+        </li>
+      </nav-block>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card white slide-left">
+          <div class="card-header-floating z-depth-2">
+            <span class="card-title">Leaderboard</span>
+            <span class="card-subtitle">An overview of the students with the highest average scores.</span>
+          </div>
+          <div class="card-content ">
+            <table class="responsive-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Surname</th>
+                  <th>First name</th>
+                  <th>Class</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+
+              <tbody id="topResultsBody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=" row">
+      <div class="col s12 m4">
+        <div class="card white scale-up-center">
+          <div class="card-header-floating with-icon z-depth-2">
+            <i class="material-icons">done_all</i>
+            <span class="card-title">Finished Assignments</span>
+            <span class="card-subtitle" id="finished_assignments"></span>
+          </div>
+          <div class="card-content ">
+            <a href="#"><i class="material-icons center open-in-new">open_in_new</i> View Assignments</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="card white scale-up-center">
+          <div class="card-header-floating with-icon pending z-depth-2">
+            <i class="material-icons">access_time</i>
+            <span class="card-title">Pending Assignments</span>
+            <span class="card-subtitle" id="pending_assignments"></span>
+          </div>
+          <div class="card-content ">
+            <a href="#"><i class="material-icons center open-in-new">open_in_new</i> View Assignments</a>
+
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="card white scale-up-center">
+          <div class="card-header-floating with-icon error z-depth-2">
+            <i class="material-icons">error</i>
+            <span class="card-title">Open Assignments</span>
+            <span class="card-subtitle" id="open_assignments"></span>
+          </div>
+          <div class="card-content ">
+            <a href="#"><i class="material-icons center open-in-new">open_in_new</i> View Assignments</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m6 ">
+        <div class="card white slide-left">
+          <div class="card-header-floating pending z-depth-2">
+            <span class="card-title">Scores</span>
+            <span class="card-subtitle">An overview of your total scores per subject.</span>
+          </div>
+          <div class="card-content ">
+            <canvas id="myChart" width="400" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 ">
+        <div class="card white slide-left">
+          <div class="card-header-floating silver z-depth-2">
+            <span class="card-title">Deadlines</span>
+            <span class="card-subtitle">An overview of your assignments and their timelines.</span>
+          </div>
+          <div class="card-content ">
+            <div id="calendar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Structure -->
+  <div id="eventModal" class="modal">
+    <div class="modal-content">
+      <h4 class="center">Assignment Info</h4>
+      <div class="row">
+        <div class="input-field col s12 active">
+          <input placeholder="" id="assignment_naam" type="text" class="validate nhs-input">
+          <label for="assignment_naam" class=" nhs-input-label">Naam</label>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 active">
+            <input placeholder="" id="omschrijving" type="text" class="validate nhs-input">
+            <label for="omschrijving" class=" nhs-input-label">Omschrijving</label>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="input-field col s12 active">
+            <input placeholder="" id="start_datum" type="text" class="datepicker nhs-input">
+            <label for="start_datum" class=" nhs-input-label">Start Datum</label>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="input-field col s12 active">
+            <input placeholder="" id="inlever_datum" type="text" class="validate nhs-input">
+            <label for="inlever_datum" class=" nhs-input-label">Eind Datum</label>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="input-field col s6 active">
+            <input placeholder="" id="punten" type="text" class="validate nhs-input">
+            <label for="punten" class=" nhs-input-label">Punten</label>
+          </div>
+          <div class="input-field col s6 active">
+            <input placeholder="" id="herkansingspunten" type="text" class="validate nhs-input">
+            <label for="herkansingspunten" class=" nhs-input-label">Herkansingspunten</label>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="container">
+      <div class="row">
+        <h1 class="center-align black-text" style="padding-top: 4%;">
+          Student Dashboard
+        </h1>
+        <nav> <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <a href="./profile.html">My Profile</a>
+          <a href="./roadmaps.html">Roadmaps</a>
+          <a href="./submissions.html">Grades</a>
+        </nav>
+      </div>
+    </div> -->
+
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="../../../src/style/materialize/js/materialize.min.js"></script>
+  <script src="../../controllers/main.js"></script>
+  <script src="../../controllers/top_resultatenController.js"></script>
+  <script src="../../controllers/studentStatsController.js"></script>
+  <script src="../../controllers/permissions.js"></script>
+  <script src="../../js/node_modules/chart.js/dist/Chart.js"></script>
+  <script src='../../js/node_modules/fullcalendar/main.js'></script>
+  <script defer type="text/javascript" src="../../js/charts/studentDashboard.js"></script>
+  <script defer type="text/javascript" src="../../js/calendar/studentCalendar.js"></script>
+  <script>
+    M.AutoInit();
+    window.onload = redirectIfNotPermitted();
+    window.onload = setFullName();
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../../../src/style/materialize/css/materialize.min.css"
+    media="screen,projection" />
+
+  <link rel="stylesheet" href="../../style/main.css">
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NHS - Roadmaps</title>
+</head>
+
+<body class="blue lighten-4">
+  <!-- Nav Bar -->
+  <nav> <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a class='dropdown-trigger ' href='#' data-target='dropdown1' href="#">
+            <i class="material-icons black-text">notifications</i>
+          </a>
+          <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="#!">one</a></li>
+            <li><a href="#!">two</a></li>
+          </ul>
+
+        </li>
+        <li>
+          <a class='dropdown-trigger ' href='#' data-target='dropdown2' href="#">
+            <i class="material-icons black-text">person</i>
+          </a>
+          <ul id='dropdown2' class='dropdown-content'>
+            <li><a href="./gegevens.html" id="huidige_gebruiker_naam"><i class="material-icons left">person</i></a></li>
+            <li><a onclick=" logout()">Logout</a></li>
+          </ul>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="col s3">
+    <ul id="slide-out" class="sidenav sidenav-fixed sidebar text-white">
+      <li class="white-text logo-block">
+        <img width="50px" src="../../../assets/natinlogo.png" />
+        Homework System
+      </li>
+      <span class="line"></span>
+      <nav-block>
+        <li class="">
+          <i class="material-icons">dashboard</i>
+          <a href="./dashboard.html">Dashboard</a>
+        </li>
+        <li>
+          <i class="material-icons">person</i>
+          <a href="./gegevens.html">My Information</a>
+        </li>
+        <li class="active">
+          <i class="material-icons">flag</i>
+          <a href="./roadmaps.html">Roadmaps</a>
+        </li>
+        <li>
+          <i class="material-icons">people</i>
+          <a href="./klassen.html">Classes</a>
+        </li>
+        <li>
+          <i class="material-icons">library_books</i>
+          <a href="./vakken.html">Subjects</a>
+        </li>
+        <li>
+          <i class="material-icons">school</i>
+          <a href="./studenten.html">Students</a>
+        </li>
+        <li>
+          <i class="material-icons">assignment</i>
+          <a href="./submissions.html">Submissions</a>
+        </li>
+        <li>
+          <i class="material-icons">assessment</i>
+          <a href="./resultaten.html">Results</a>
+        </li>
+      </nav-block>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="row">
+      <div class="col s12 m9 slide-left">
+        <div class="card white">
+          <div class="card-header-floating z-depth-2">
+            <span class="card-title">Roadmaps</span>
+            <span class="card-subtitle">An overview of all your roadmaps.</span>
+          </div>
+          <div class="card-content ">
+            <a class="waves-effect waves-light btn  nhs-green modal-trigger" href="#modal_create_roadmap"><i
+                class="material-icons right">add</i>Add</a>
+            <a class="waves-effect waves-light btn  nhs-green modal-trigger" href="#modal_assign_roadmap"
+              onclick="return fillAssociationSelects()"><i class="material-icons right">add</i>Assign Roadmap to
+              Class</a>
+            <table id="roadmapTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Start Date</th>
+                  <th>Eind Date</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody id="roadmapTableBody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <div class="row">
+    <!-- view roadmap modal -->
+    <div id="modal_roadmap" class="modal" style="width: 80vw;">
+      <div class="modal-content">
+        <h4 id="AssignmentsHeader" style="font-family: 'Anton', sans-serif; text-align: center">
+        </h4>
+        <a class="btn waves-effect waves-light modal-trigger nhs_green" href="#modal_assignment" name="addAssignment"
+          onclick="return fillSelects();">Add Assignment</a>
+
+        <br />
+
+        </h4>
+        <br />
+        <div>
+          <!-- <div class="row"> -->
+          <div class="col s12" style="height: 28em; width: auto; overflow: auto">
+            <table id="assignmentsTable" class="responsive-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Start Date</th>
+                  <th>Deadline</th>
+                  <th>Points</th>
+                  <th>Re-examination</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="assignmentsTableBody"></tbody>
+            </table>
+          </div>
+
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- Create roadmap modal -->
+  <div id="modal_create_roadmap" class="modal" style="height: 900px">
+    <div class="modal-content">
+      <h3 style="font-family: 'Anton', sans-serif; text-align: center">
+        New Roadmap
+      </h3>
+      <br />
+      <div>
+        <div class="row">
+          <form class="col s12" method="POST" id="roadmapForm" name="roadmapForm" onsubmit="return createRoadmap()">
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="text" name="roadmap_naam" id="roadmap_naam" required />
+                <label for="roadmap_naam">Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="date" name="start_datum" id="start_datum" required />
+                <label for="start_datum">Start Date</label>
+              </div>
+              <div class="input-field col s6">
+                <input type="date" name="eind_datum" id="eind_datum" required />
+                <label for="eind_datum">Deadline</label>
+              </div>
+            </div>
+
+            <button class="btn waves-effect waves-light  nhs-green nav" type="submit" name="action">
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Assign roadmap modal -->
+  <div id="modal_assign_roadmap" class="modal" style="height: 900px">
+    <div class="modal-content">
+      <h3 style="font-family: 'Anton', sans-serif; text-align: center">
+        Assign Roadmap
+      </h3>
+      <br />
+      <div>
+        <div class="row">
+          <form class="col s12" method="POST" id="assignRoadmapForm" name="assignRoadmapForm"
+            onsubmit="return assignRoadmap()">
+            <div class="row">
+              <div class="input-field col s6">
+                <select name="jaar_klas_id" id="jaar_klas_id">
+                  <option value="Kies een klas" disabled selected>
+                    Class
+                  </option>
+                </select>
+                <label for="jaar_klas_id">Klas</label>
+              </div>
+
+              <div class="input-field col s6">
+                <select name="roadmap_id" id="roadmap_id">
+                  <option value="Kies een Roadmap" disabled selected>
+                    Roadmap
+                  </option>
+                </select>
+                <label for="roadmap_id">Roadmap</label>
+              </div>
+            </div>
+
+            <button class="btn waves-effect waves-light  nhs-green nav" type="submit" name="action">
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- update roadmap modal -->
+  <div id="modal_update_roadmap" class="modal" style="height: 900px">
+    <div class="modal-content">
+      <h3 style="font-family: 'Anton', sans-serif; text-align: center">
+        Edit Roadmap
+      </h3>
+      <br />
+      <div>
+        <div class="row">
+          <form class="col s12" method="POST" id="updateRoadmapForm" name="updateRoadmapForm"
+            onsubmit="return updateRoadmap()">
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="text" name="naam" id="updateNaam" required />
+                <label for="naam">Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="date" name="start_datum" id="updateStartDatum" required />
+                <label for="start_datum">Start Date</label>
+              </div>
+              <div class="input-field col s6">
+                <input type="date" name="eind_datum" id="updateEindDatum" required />
+                <label for="eind_datum">Eind Date</label>
+              </div>
+            </div>
+
+            <button class="btn waves-effect waves-light, nav" type="submit" name="action">
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create assignment modal -->
+  <div id="modal_assignment" class="modal" style="height: 900px">
+    <div class="modal-content">
+      <h3 style="font-family: 'Anton', sans-serif; text-align: center">
+        New Assignment
+      </h3>
+      <br />
+      <div>
+        <div class="row">
+          <form class="col s12" method="POST" id="assignmentForm" name="assignmentForm"
+            onsubmit="return createAssignment()">
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="text" name="assignment_naam" id="assignment_naam" required />
+                <label for="assignment_naam">Name</label>
+              </div>
+              <div class="input-field col s6">
+                <select name="vak_id" id="vak_id">
+                  <option value="Kies een vak" disabled selected>
+                    Subject
+                  </option>
+                </select>
+                <label for="vak_id">Subject</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="text" name="omschrijving" id="omschrijving" required />
+                <label for="omschrijving">Description</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="date" name="start_datum" id="startDatum" required />
+                <label for="start_datum">Start Date</label>
+              </div>
+              <div class="input-field col s6">
+                <input type="date" name="inlever_datum" id="inleverDatum" required />
+                <label for="inlever_datum">Eind Date</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="number" name="punten" id="punten" required />
+                <label for="punten">Points</label>
+              </div>
+              <div class="input-field col s6">
+                <input type="number" name="herkansingspunten" id="herkansingspunten" required />
+                <label for="herkansingspunten">Re-examination</label>
+              </div>
+            </div>
+
+            <button class="btn waves-effect waves-light, nav" type="submit" name="action">
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+   <!-- Update assignment modal -->
+   <div id="modal_update_assignment" class="modal" style="height: 900px">
+    <div class="modal-content">
+      <h3 style="font-family: 'Anton', sans-serif; text-align: center">
+        Edit Assignment
+      </h3>
+      <br />
+      <div>
+        <div class="row">
+          <form class="col s12" method="POST" id="updateAssignmentForm" name="updateAssignmentForm"
+            onsubmit="return updateAssignment()">
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="text" name="update_assignment_naam" id="update_assignment_naam" required />
+                <label for="update_assignment_naam">Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="text" name="update_omschrijving" id="update_omschrijving" required />
+                <label for="update_omschrijving">Description</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="date" name="update_start_datum" id="update_start_datum" required />
+                <label for="update_start_datum">Start Date</label>
+              </div>
+              <div class="input-field col s6">
+                <input type="date" name="update_inlever_datum" id="update_inlever_datum" required />
+                <label for="update_inlever_datum">Eind Date</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="number" name="update_punten" id="update_punten" required />
+                <label for="update_punten">Points</label>
+              </div>
+              <div class="input-field col s6">
+                <input type="number" name="update_herkansingspunten" id="update_herkansingspunten" required />
+                <label for="update_herkansingspunten">Re-examination</label>
+              </div>
+            </div>
+
+            <button class="btn waves-effect waves-light, nav" type="submit" name="action">
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--JavaScript at end of body for optimized loading-->
+
+  <script type="text/javascript" src="../../../src/style/materialize/js/materialize.min.js"></script>
+
+  <script src="../../controllers/main.js"></script>
+  <script src="../../controllers/permissions.js"></script>
+  <script src="../../controllers/roadmapController.js"></script>
+  <script>
+    M.AutoInit();
+    document.addEventListener("DOMContentLoaded", function () {
+      var elems = document.querySelectorAll("select");
+      var instances = M.FormSelect.init(elems, {});
+      // var instances = M.FormSelect.init(elems, options);
+
+    });
+
+    window.onload = redirectIfNotPermitted();
+
+    window.onload = setFullName();
+  </script>
+</body>
+
+</html>

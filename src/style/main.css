@@ -1,0 +1,350 @@
+@media only screen and (max-width: 990px) {
+  .main-content {
+    padding-left: 0 !important;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,500&display=swap");
+body {
+  background-color: #f0f0f0 !important;
+  font-family: "Roboto", sans-serif;
+}
+/*  */
+.sidebar {
+  background: linear-gradient(
+      0deg,
+      rgba(33, 33, 33, 0.9),
+      rgba(33, 33, 33, 0.9)
+    ),
+    url("../../assets/Student/BG\ Photo.png");
+  filter: opacity(0.9);
+  width: 288px;
+}
+
+.logo-block {
+  padding: 5px 50px;
+}
+
+.logo-block img {
+  vertical-align: middle;
+}
+nav ul a {
+  text-align: center;
+  width: 64px !important;
+  border-radius: 50% !important;
+}
+nav-block {
+  margin-top: 30px;
+  display: block;
+}
+nav-block li {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  height: 35px;
+}
+nav-block li.active {
+  background: #45e042 !important;
+}
+nav-block li a {
+  color: white !important;
+  height: 35px !important;
+  line-height: 35px !important;
+}
+nav-block li i.material-icons {
+  color: white;
+  float: left;
+  padding: 5px 10px;
+}
+.line {
+  height: 1px;
+  width: 80%;
+  display: block;
+  background: white;
+  filter: opacity(0.6);
+  margin: 0 auto;
+}
+.main-content {
+  background-color: #f0f0f0 !important;
+  padding-left: 288px;
+  min-height: calc(100vh - 64px);
+}
+/* materialize overrides */
+nav {
+  background-color: #f0f0f0 !important;
+  color: black;
+}
+
+.btn {
+  border-radius: 0.4em;
+}
+.btn:disabled {
+  background: #dfdfdf;
+}
+.btn:hover {
+  background-color: #79ff76;
+}
+.btn-floating:hover {
+  background-color: #79ff76;
+}
+
+.card {
+  border-radius: 6px;
+}
+
+/* custom card styling */
+.card-header-floating {
+  display: block;
+  height: 90px;
+  width: 90%;
+  min-width: 90px;
+  transform: translate(0%, -30%);
+  margin: 0 auto;
+  color: white;
+  background: linear-gradient(90deg, #45e042 0%, #5cca59 100%);
+  padding: 10px 10px;
+  border-radius: 6px;
+}
+.card-header-floating.with-icon {
+  width: 25% !important;
+  margin: 0 27px !important;
+  border-radius: 15px !important;
+}
+
+.card-header-floating.with-icon .material-icons {
+  display: block;
+  text-align: center;
+  padding: 20px;
+}
+.card-subtitle {
+  display: block;
+}
+/* .card-content > a {
+  /* color: #a3a3a3; } */
+.input-field {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.open-in-new {
+  vertical-align: middle;
+  color: #a3a3a3;
+}
+
+/* notifications */
+#notifications {
+  background-color: #fff;
+  margin: 0;
+  display: none;
+  min-width: 100px;
+  overflow-y: auto;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+#notifications.open {
+  display: block;
+  display: block;
+  /* width: 270px; */
+  top: 50px;
+  left: calc(100vw - 347px);
+  /* height: 100px; */
+  transform-origin: 100% 0px;
+  opacity: 1;
+  transform: scaleX(1) scaleY(1);
+  transition: 3s ease-in-out;
+}
+#notifications > li {
+  width: 100%;
+  height: 40px;
+}
+
+/* theme customization*/
+input[type="text"]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #45e042;
+  -webkit-box-shadow: 0 1px 0 0 #45e042;
+  box-shadow: 0 1px 0 0 #45e042;
+}
+input[type="text"]:not(.browser-default):focus:not([readonly]) + label {
+  color: #45e042;
+}
+
+/* colors */
+.primary {
+  background: linear-gradient(90deg, #48b346 0%, #45e042 100%);
+}
+.error {
+  background: linear-gradient(90deg, #ff2020 0%, #c50909 100%);
+}
+.nhs-green {
+  background: #45e042;
+}
+.pending {
+  background: linear-gradient(90deg, #f8d57d 0%, #e4ba50 100%);
+}
+.silver {
+  background: linear-gradient(90deg, #cacaca 0%, #a3a3a3 100%);
+}
+
+/* Complete Assignments */
+.card-header-floating.with-icon .card-title {
+  transform: translate(56%, -120%);
+  color: black;
+  display: block;
+  width: 180px;
+  font-size: 16px;
+}
+.card-header-floating.with-icon .card-subtitle {
+  width: 30px;
+  color: black;
+  font-size: x-large;
+  transform: translate(770%, -90%);
+}
+
+/* Tables*/
+#gegevensForm {
+  padding: 0px 20px;
+}
+
+/* FORM STUFF*/
+
+/* custom inputs */
+.nhs-input {
+  height: 1.5rem !important;
+  font-size: 16px !important;
+  margin: 0 0 8px 0 !important;
+  border-radius: 0.5em !important;
+  border: #ced4da 1px solid !important;
+  padding: 13px 3px !important;
+}
+.nhs-input-label {
+  margin-left: 0.4em;
+}
+.nhs-input-label.active {
+  transform: translateY(-19px) scale(0.8) !important;
+}
+.nhs-select-label {
+  transform: translateY(4px) !important;
+}
+
+form .row {
+  margin-bottom: 0 !important;
+}
+
+form h5 {
+  color: #949494;
+}
+
+form h6 {
+  color: #949494;
+}
+
+/* Animations*/
+
+.scale-up-center {
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
+  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.slide-left {
+  -webkit-animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.slide-right {
+  -webkit-animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-9-25 19:55:58
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation slide-left
+ * ----------------------------------------
+ */
+@-webkit-keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+@keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+  100% {
+    -webkit-transform: translateX(328px);
+    transform: translateX(328px);
+  }
+}
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+  100% {
+    -webkit-transform: translateX(328px);
+    transform: translateX(328px);
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2020-9-25 20:12:24
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation scale-up-center
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+/* scale up */
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}

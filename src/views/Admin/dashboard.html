@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../../../src/style/materialize/css/materialize.min.css"
+    media="screen,projection" />
+
+  <link rel="stylesheet" href="../../../src/style/main.css">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NHS - Dashboard</title>
+</head>
+
+<body>
+  <nav> <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a class='dropdown-trigger ' href='#' data-target='dropdown1' href="#">
+            <i class="material-icons black-text">notifications</i>
+          </a>
+          <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="#!">one</a></li>
+            <li><a href="#!">two</a></li>
+          </ul>
+
+        </li>
+        <li>
+          <a class='dropdown-trigger ' href='#' data-target='dropdown2' href="#">
+            <i class="material-icons black-text">person</i>
+          </a>
+          <ul id='dropdown2' class='dropdown-content'>
+            <li><a href="./gegevens.html" id="huidige_gebruiker_naam"><i class="material-icons left">person</i></a></li>
+            <li><a onclick=" logout()">Logout</a></li>
+          </ul>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="col s3">
+    <ul id="slide-out" class="sidenav sidenav-fixed sidebar text-white">
+      <li class="white-text logo-block">
+        <img width="50px" src="../../../assets/natinlogo.png" />
+        Homework System
+      </li>
+      <span class="line"></span>
+      <nav-block>
+        <li class="active">
+          <i class="material-icons">dashboard</i>
+          <a href="#">Dashboard</a>
+        </li>
+        <li>
+          <i class="material-icons">person</i>
+          <a href="./gegevens.html">My Information</a>
+        </li>
+        <li>
+          <i class="material-icons">people</i>
+          <a href="./docenten.html">Teachers</a>
+        </li>
+        <li>
+          <i class="material-icons">people</i>
+          <a href="./admins.html">Administrators</a>
+        </li>
+        <li>
+          <i class="material-icons">flag</i>
+          <a href="./richtingen.html">Studies</a>
+        </li>
+      </nav-block>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card white slide-left">
+          <div class="card-header-floating z-depth-2">
+            <span class="card-title">Leaderboard</span>
+            <span class="card-subtitle">Overview of the students with the highest average scores.</span>
+          </div>
+          <div class="card-content ">
+            <table class="responsive-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Surname</th>
+                  <th>First name</th>
+                  <th>Class</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+
+              <tbody id="topResultsBody">
+                              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--JavaScript at end of body for optimized loading-->
+
+  <script type="text/javascript" src="../../../src/style/materialize/js/materialize.min.js"></script>
+  <script src="../../controllers/main.js"></script>
+  <script src="../../controllers/top_resultatenController.js"></script>
+
+  <script src="../../controllers/permissions.js"></script>
+  <script>
+    M.AutoInit();
+    window.onload = redirectIfNotPermitted();
+    
+    window.onload = setFullName();
+  </script>
+</body>
+
+</html>
