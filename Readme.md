@@ -1,6 +1,12 @@
 Natin Homework System
 
 
+Requirements:
+- Node + NPM cli
+- Mysql
+- Browser
+
+
 INSTALLATIE:
 
 *Navigeer in een command line waarin "git" geinstalleerd is, naar de "backend" folder. 
