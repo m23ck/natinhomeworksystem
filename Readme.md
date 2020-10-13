@@ -20,5 +20,7 @@ INSTALLATIE:
 
 
 Zodra u klaar bent om de app te gebruiken:
+
 *run: "npm start"
+
 *open de "index.html" file in een browser 
